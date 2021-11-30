@@ -1,0 +1,11 @@
+.navbtn {
+  border: none;
+  outline: none;
+  background: transparent; 
+  color: var(--soft-black);
+  cursor: pointer;
+  font-size: 16px;
+}
+.navbtn:hover {
+  color: var(--soft-green);
+}

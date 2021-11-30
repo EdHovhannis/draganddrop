@@ -1,0 +1,11 @@
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.activelink {
+    color: var(--soft-green);
+}
+.trash:hover {
+    color: var(--soft-red) !important;
+}

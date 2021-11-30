@@ -1,0 +1,6 @@
+export const CREATE_DATA = "CREATE_DATA";
+export const CREATE_DATA_SUCCESS = "CREATE_DATA_SUCCESS";
+export const CREATE_DATA_FAIL = "CREATE_DATA_FAIL";
+
+export const GET_DATA = "GET_DATA";
+export const GET_DATA_FAIL = "GET_DATA_FAIL";

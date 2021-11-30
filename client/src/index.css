@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+span,
+div {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+:root {
+  --soft-white: #f1f1f1;
+
+  --soft-green: #5f9ea0;
+  
+  --soft-red: #dc143c;
+
+  --soft-orange: #d2691e;
+
+  --frame-grey: #c7c7c7;
+
+  --soft-grey: #bdbdbd;
+
+  --soft-black: #474747;
+
+  --medium-green: #447475;
+}

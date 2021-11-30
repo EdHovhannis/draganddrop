@@ -1,0 +1,15 @@
+.mainlayout {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "navbar"
+    "content";
+  height: 100vh;
+}
+.navbar {
+  grid-area: navbar;
+}
+.content {
+  grid-area: content;
+}

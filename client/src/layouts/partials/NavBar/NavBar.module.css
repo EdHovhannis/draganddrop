@@ -1,0 +1,46 @@
+.navbar {
+  background: var(--soft-white);
+  height: 80px;
+  display: grid;
+  grid-template-columns: 0.01fr auto 1fr auto 0.04fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: " . logo menu addbtn .";
+}
+.logo {
+  grid-area: logo;
+  align-self: center;
+}
+.logo > span {
+  font-weight: 700;
+  color: var(--soft-green);
+  font-size: 20px;
+}
+.logo > span > span {
+  color: var(--soft-orange);
+}
+.menu {
+  grid-area: menu;
+  color: var(--soft-black); 
+  align-self: center;
+  justify-self: center;
+}
+.menu i {
+  font-size: 24px;
+  cursor: pointer;
+}
+.menu i:hover {
+  color: var(--medium-green);
+}
+.addbtn {
+  grid-area: addbtn;
+  align-self: center;
+  font-size: 32px;
+  color: var(--soft-green);
+  cursor: pointer;
+}
+.addbtn:hover {
+  color: var(--medium-green);
+}
+.activedtoolbarbtn {
+  color: var(--medium-green);
+}

@@ -86,6 +86,10 @@ export const Menu = ({ gridposition }) => {
     setAllowresize(false);
   };
 
+  const allowpalletehandler = () => {
+    console.log("work");
+  }
+
   return (
     <div className={cls(gridposition, styles.menu)}>
       {allowtoolbar && (
@@ -115,6 +119,7 @@ export const Menu = ({ gridposition }) => {
             })}
             onClick={allowresizeframehandler}
           ></i>
+          <i className="fas fa-palette" onClick={allowpalletehandler}></i>
           <i className={cls("fas fa-code", { [styles.activelink]: false })}></i>
           <i
             className={cls("fas fa-trash", styles.trash)}

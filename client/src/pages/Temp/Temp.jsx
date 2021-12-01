@@ -3,7 +3,7 @@ import cls from "classnames";
 import styles from "./Temp.module.css";
 import { ContentContext } from "../../context/ContentContext";
 import { ActionsContext } from "./../../context/ActionsContext";
-import { Resizers } from "./../Created/Resizers";
+import { Resizers } from "../../components/Resizers/Resizers";
 import {
   getDataAction,
   updatecurrentframeAction,

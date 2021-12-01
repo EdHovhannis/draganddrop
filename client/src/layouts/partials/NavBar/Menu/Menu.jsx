@@ -42,6 +42,7 @@ export const Menu = ({ gridposition }) => {
     currentframeid,
     setCurrentframeid,
     currentframeparams,
+    setCurrentframeparams,
   } = useContext(ContentContext);
 
   const allowcreateframehandler = () => {
@@ -60,6 +61,10 @@ export const Menu = ({ gridposition }) => {
         setAllowtoolbar(!allowtoolbar);
         setAllowframetools(false);
         setCurrentframeid("");
+        setCurrentframeparams(null);
+        setAllowresize(false);
+        setAllowhandrock(false);
+        setAllowpalette(false);
       });
       return;
     }
@@ -92,9 +97,16 @@ export const Menu = ({ gridposition }) => {
   };
 
   const allowpalletehandler = () => {
+    if (allowpallete) {
+      setTempHide(false);
+    } else {
+      setTempHide(true);
+    }
+    setTempstyle(currentframeparams);
     setAllowpalette(!allowpallete);
     setAllowresize(false);
     setAllowhandrock(false);
+    return;
   };
 
   return (
@@ -126,7 +138,12 @@ export const Menu = ({ gridposition }) => {
             })}
             onClick={allowresizeframehandler}
           ></i>
-          <i className="fas fa-palette" onClick={allowpalletehandler}></i>
+          <i
+            className={cls("fas fa-palette", {
+              [styles.activelink]: allowpallete,
+            })}
+            onClick={allowpalletehandler}
+          ></i>
           <i className={cls("fas fa-code", { [styles.activelink]: false })}></i>
           <i
             className={cls("fas fa-trash", styles.trash)}

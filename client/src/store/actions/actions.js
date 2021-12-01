@@ -75,3 +75,21 @@ export const updatecurrentframeAction = (keys, id) => {
     }
   };
 };
+export const updatecurrentbackgroundframeAction = (keys, id) => {
+  return async () => {
+    try {
+      return await fetch(`/api/data/updatebackground/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(keys),
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+
+

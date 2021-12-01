@@ -1,8 +1,7 @@
 import express from "express";
 const router = express.Router();
 import expressasynchandler from "express-async-handler";
-import Data from "../model/dataModel.js";
-// import { isAuth } from "../utils/utils.js";
+import Data from "../model/dataModel.js"; 
 
 router.post(
   "/datacreate",
@@ -60,24 +59,16 @@ router.post(
     }
   })
 );
-
-// router.post('/deactivated/:id', isAuth, expressasynchandler(async (req, res) => {
-//     try {
-//         const games = await Games.findByIdAndUpdate(req.params.id, req.body)
-//         res.status(200).json(games)
-//     } catch(error) {
-//         console.log(error.message?error.message:error);
-//     }
-// }))
-
-// router.post('/updategameitems/:id', isAuth, expressasynchandler(async (req, res) => {
-
-//     try {
-//         const games = await Games.findByIdAndUpdate(req.params.id, req.body)
-//         res.status(200).json(games)
-//     } catch(error) {
-//         console.log(error.message?error.message:error);
-//     }
-// }))
+router.post(
+  "/updatebackground/:id",
+  expressasynchandler(async (req, res) => {
+    try {
+      const data = await Data.findByIdAndUpdate(req.params.id, req.body);
+      res.status(200).json(data);
+    } catch (error) {
+      console.log(error.message ? error.message : error);
+    }
+  })
+);
 
 export default router;

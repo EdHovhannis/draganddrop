@@ -11,7 +11,7 @@ export const Frame = styled.div`
   border: 2px solid transparent;
   &:hover {
     border: 2px solid blue;
-  } 
+  }
   ${(props) =>
     props?.allowframetools &&
     css`
@@ -24,6 +24,11 @@ export const Frame = styled.div`
     `};
   ${(props) =>
     props?.dispnone &&
+    css`
+      display: none;
+    `};
+  ${(props) =>
+    props?.palletenone &&
     css`
       display: none;
     `};

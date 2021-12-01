@@ -22,7 +22,7 @@ export const CreatedFrames = ({ frame }) => {
   } = useContext(ContentContext);
 
   const frameToolBar = () => {
-    if (!allowresize) {
+    if (!allowresize) { 
       setAllowframetools(!allowframetools);
       setAllowtoolbar(false);
       if (!allowframetools) {
@@ -49,6 +49,7 @@ export const CreatedFrames = ({ frame }) => {
       <Frame
         theme={frame}
         dispnone={allowhandrock && currentframeid === frame._id}
+        palletenone={allowpallete && currentframeid === frame._id}
         allowframetools={allowframetools && currentframeid === frame._id}
         nonedisp={allowresize && currentframeid === frame._id}
         onClick={frameToolBar}

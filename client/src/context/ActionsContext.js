@@ -10,6 +10,7 @@ export const ActionsProvider = ({ children }) => {
   const [allowframetools, setAllowframetools] = useState(false);
   const [allowhandrock, setAllowhandrock] = useState(false);
   const [allowresize, setAllowresize] = useState(false);
+  const [allowpallete, setAllowpalette] = useState(false);
 
   return (
     <ActionsContext.Provider
@@ -26,6 +27,8 @@ export const ActionsProvider = ({ children }) => {
         setAllowhandrock,
         allowresize,
         setAllowresize,
+        allowpallete,
+        setAllowpalette,
       }}
     >
       {children}

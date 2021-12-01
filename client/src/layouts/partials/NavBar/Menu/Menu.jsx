@@ -33,6 +33,8 @@ export const Menu = ({ gridposition }) => {
     setAllowframetools,
     allowresize,
     setAllowresize,
+    allowpallete,
+    setAllowpalette,
   } = useContext(ActionsContext);
 
   const {
@@ -72,6 +74,7 @@ export const Menu = ({ gridposition }) => {
     setTempstyle(currentframeparams);
     setAllowresize(!allowresize);
     setAllowhandrock(false);
+    setAllowpalette(false);
     return;
   };
 
@@ -84,11 +87,15 @@ export const Menu = ({ gridposition }) => {
     setTempstyle(currentframeparams);
     setAllowhandrock(!allowhandrock);
     setAllowresize(false);
+    setAllowpalette(false);
+    return;
   };
 
   const allowpalletehandler = () => {
-    console.log("work");
-  }
+    setAllowpalette(!allowpallete);
+    setAllowresize(false);
+    setAllowhandrock(false);
+  };
 
   return (
     <div className={cls(gridposition, styles.menu)}>

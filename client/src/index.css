@@ -14,6 +14,9 @@ div {
   -moz-user-select: none;
   user-select: none;
 }
+.exp {
+  color: #c2bdba;
+}
 
 :root {
   --soft-white: #f1f1f1;
@@ -22,7 +25,7 @@ div {
   
   --soft-red: #dc143c;
 
-  --soft-orange: #d2691e;
+  --soft-orange: #dd9059;
 
   --frame-grey: #c7c7c7;
 

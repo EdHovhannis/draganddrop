@@ -5,12 +5,21 @@ import styles from "./NavBar.module.css";
 import { Menu } from "./Menu/Menu";
 
 export const NavBar = ({ gridposition }) => {
-  const { allowtoolbar, setAllowtoolbar, setAllowframetools } =
-    useContext(ActionsContext);
+  const {
+    allowtoolbar,
+    setAllowtoolbar,
+    setAllowframetools,
+    setAllowhtmltagsmenu,
+    allowhtmltagsmenu,
+  } = useContext(ActionsContext);
 
   const allowtoolbarhandler = () => {
     setAllowtoolbar(!allowtoolbar);
     setAllowframetools(false);
+    if (allowtoolbar) {
+      setAllowhtmltagsmenu({ ...allowhtmltagsmenu, flag: false });
+      setTimeout(() => setAllowhtmltagsmenu({ atr: "", flag: false }), 1200);
+    }
   };
 
   return (

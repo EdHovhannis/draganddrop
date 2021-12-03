@@ -1,5 +1,5 @@
 .navbar {
-  background: var(--soft-white);
+  background: var(--soft-black);
   height: 80px;
   display: grid;
   grid-template-columns: 0.01fr auto 1fr auto 0.04fr;
@@ -20,7 +20,7 @@
 }
 .menu {
   grid-area: menu;
-  color: var(--soft-black); 
+  color: var(--soft-white);
   align-self: center;
   justify-self: center;
 }

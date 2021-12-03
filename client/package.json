@@ -1,7 +1,7 @@
 {
   "name": "draganddrop",
   "version": "0.1.0",
-  "proxy": "http://localhost:8008/",
+  "proxy": "https://drager.herokuapp.com/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",

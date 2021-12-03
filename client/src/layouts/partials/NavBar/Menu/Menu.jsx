@@ -35,6 +35,8 @@ export const Menu = ({ gridposition }) => {
     setAllowresize,
     allowpallete,
     setAllowpalette,
+    allowhtmltagsmenu,
+    setAllowhtmltagsmenu,
   } = useContext(ActionsContext);
 
   const {
@@ -109,6 +111,14 @@ export const Menu = ({ gridposition }) => {
     return;
   };
 
+  const allowbuttonshandler = (e) => {
+    setAllowhtmltagsmenu({
+      ...allowhtmltagsmenu,
+      atr: e.target.getAttribute("atr"),
+      flag: true,
+    });
+  };
+
   return (
     <div className={cls(gridposition, styles.menu)}>
       {allowtoolbar && (
@@ -119,9 +129,31 @@ export const Menu = ({ gridposition }) => {
             })}
             onClick={allowcreateframehandler}
           ></i>
-          <Button way="navbtn">Buttons</Button>
-          <Button way="navbtn">Inputs</Button>
-          <Button way="navbtn">Texts</Button>
+          <Button
+            way="navbtn"
+            atr={"buttons"}
+            onClick={allowbuttonshandler}
+            className={cls({
+              [styles.activelink]: allowhtmltagsmenu.atr === "buttons",
+            })}
+          >
+            Buttons
+          </Button>
+          <Button
+            way="navbtn"
+            atr={"inputs"}
+            onClick={allowbuttonshandler}
+            className={cls({
+              [styles.activelink]: allowhtmltagsmenu.atr === "inputs",
+            })}
+          >
+            Inputs
+          </Button>
+          <Button way="navbtn" atr={"texts"} onClick={allowbuttonshandler} className={cls({
+              [styles.activelink]: allowhtmltagsmenu.atr === "texts",    
+            })}>
+            Texts
+          </Button>
         </>
       )}
       {allowframetools && (

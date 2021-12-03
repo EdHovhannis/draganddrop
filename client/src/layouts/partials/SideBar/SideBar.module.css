@@ -1,0 +1,31 @@
+.sidebar {
+  position: fixed;
+  background: var(--soft-white);
+  width: 256px;
+  height: 100vh;
+}
+.sidebarshow {
+  transform: translateX(-100%);
+  transition: all ease 1s;
+}
+.sidebarhide {
+  transform: translateX(0);
+  transition: all ease 1s;
+}
+.timesicon {
+  position: absolute;
+  color: var(--soft-black);
+  font-size: 20px;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+.timesicon:hover {
+  color: var(--soft-green);
+}
+.title {
+  color: var(--soft-black);
+  grid-area: title;
+  padding: 10px 0 0 24px;
+  border-bottom: 1px solid var(--soft-grey);
+}

@@ -8,13 +8,16 @@ import {
 export const createDataAction = (keys) => {
   return async (dispatch) => {
     try {
-      const response = await fetch("/api/data/datacreate", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-        body: JSON.stringify(keys),
-      });
+      const response = await fetch(
+        "https://drager.herokuapp.com/api/data/datacreate",
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify(keys),
+        }
+      );
       const data = await response.json();
       dispatch({ type: CREATE_DATA_SUCCESS, payload: data });
     } catch (error) {
@@ -31,7 +34,9 @@ export const createDataAction = (keys) => {
 export const getDataAction = () => {
   return async (dispatch) => {
     try {
-      const response = await fetch("/api/data/getdata");
+      const response = await fetch(
+        "https://drager.herokuapp.com/api/data/getdata"
+      );
       const data = await response.json();
       dispatch({
         type: GET_DATA,
@@ -52,9 +57,12 @@ export const getDataAction = () => {
 export const deletecurrentframeAction = (id) => {
   return async () => {
     try {
-      return await fetch(`/api/data/removedata/${id}`, {
-        method: "POST",
-      });
+      return await fetch(
+        `https://drager.herokuapp.com/api/data/removedata/${id}`,
+        {
+          method: "POST",
+        }
+      );
     } catch (error) {
       console.log(error);
     }
@@ -63,13 +71,16 @@ export const deletecurrentframeAction = (id) => {
 export const updatecurrentframeAction = (keys, id) => {
   return async () => {
     try {
-      return await fetch(`/api/data/updatedata/${id}`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-        body: JSON.stringify(keys),
-      });
+      return await fetch(
+        `https://drager.herokuapp.com/api/data/updatedata/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify(keys),
+        }
+      );
     } catch (error) {
       console.log(error);
     }
@@ -78,18 +89,18 @@ export const updatecurrentframeAction = (keys, id) => {
 export const updatecurrentbackgroundframeAction = (keys, id) => {
   return async () => {
     try {
-      return await fetch(`/api/data/updatebackground/${id}`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-        body: JSON.stringify(keys),
-      });
+      return await fetch(
+        `https://drager.herokuapp.com/api/data/updatebackground/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify(keys),
+        }
+      );
     } catch (error) {
       console.log(error);
     }
   };
 };
-
-
-

@@ -5,7 +5,11 @@ import { ActionsContext } from "../../context/ActionsContext";
 import { Temp } from "../Temp/Temp";
 import { CreatedFrames } from "../Created/CreatedFrames";
 import { ContentContext } from "../../context/ContentContext";
-import { createDataAction, getDataAction, updatecurrentframeAction } from "./../../store/actions/actions";
+import {
+  createDataAction,
+  getDataAction,
+  updatecurrentframeAction,
+} from "./../../store/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 export const Content = () => {
@@ -22,7 +26,7 @@ export const Content = () => {
     setAllowcreateframe,
     temphide,
     setTempHide,
-    allowresize, 
+    allowresize,
   } = useContext(ActionsContext);
 
   const {
@@ -34,7 +38,7 @@ export const Content = () => {
     y,
     currentframeparams,
     setCurrentframeparams,
-    currentframeid
+    currentframeid,
   } = useContext(ContentContext);
 
   const createFrameStart = (e) => {
@@ -141,11 +145,11 @@ export const Content = () => {
       new Promise((resolve) => {
         resolve(dispatch(updatecurrentframeAction(tempstyle, currentframeid)));
       }).then(() => {
-        dispatch(getDataAction()); 
+        dispatch(getDataAction());
       });
     }
   };
-
+  console.log(data);
   return (
     <div
       className={cls(styles.content, {

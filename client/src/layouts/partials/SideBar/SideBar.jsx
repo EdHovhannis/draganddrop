@@ -4,7 +4,7 @@ import cls from "classnames";
 import { ActionsContext } from "../../../context/ActionsContext";
 import { SideBarContent } from "./SideBarContent";
 import { SideBarContentBox } from "./SideBarContentBox";
-import { sidebarstate } from "../../../locale/sidebarstate";
+import { sidebarstate } from "../../../locales/sidebarstate";
 
 export const SideBar = () => {
   const { allowhtmltagsmenu, setAllowhtmltagsmenu } =

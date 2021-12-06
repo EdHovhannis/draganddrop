@@ -12,6 +12,7 @@ export const CreatedFrames = ({ frame }) => {
     allowhandrock,
     allowresize,
     allowpallete,
+    allowcreateframe,
   } = useContext(ActionsContext);
 
   const {
@@ -22,7 +23,8 @@ export const CreatedFrames = ({ frame }) => {
   } = useContext(ContentContext);
 
   const frameToolBar = () => {
-    if (!allowresize) { 
+    if (!allowresize && !allowcreateframe) {
+      console.log("work");
       setAllowframetools(!allowframetools);
       setAllowtoolbar(false);
       if (!allowframetools) {
@@ -52,7 +54,8 @@ export const CreatedFrames = ({ frame }) => {
         palletenone={allowpallete && currentframeid === frame._id}
         allowframetools={allowframetools && currentframeid === frame._id}
         nonedisp={allowresize && currentframeid === frame._id}
-        onClick={frameToolBar}
+        allowborder={!allowcreateframe}
+        // onClick={frameToolBar}
       ></Frame>
       {allowpallete ? <Palette left={left} top={top} /> : <></>}
     </>

@@ -11,6 +11,7 @@ import {
   updatecurrentframeAction,
 } from "./../../store/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
+// import { useCheckparent } from "./../../helpers/useCheckparent";
 
 export const Content = () => {
   const dispatch = useDispatch();
@@ -47,23 +48,27 @@ export const Content = () => {
       setY(e.clientY);
       const left = e.nativeEvent.offsetX;
       const top = e.nativeEvent.offsetY;
+      // const left = e.clientX;
+      // const top = e.clientY;
+
       setTempstyle({
         ...tempstyle,
         top: `${top}px`,
         left: `${left}px`,
       });
     }
-    if (allowresize && currentframeparams) {
-      setX(e.clientX);
-      setY(e.clientY);
-    }
+    // if (allowresize && currentframeparams) {
+    //   setX(e.clientX);
+    //   setY(e.clientY);
+    // }
     return;
   };
   const createFrameProgress = (e) => {
     if (allowcreateframe) {
       const left = parseInt(tempstyle.left) > 0;
       const top = parseInt(tempstyle.top) > 0;
-      if (left > 0 || top > 0) {
+
+      if (left || top) {
         const width = Math.abs(x - e.clientX);
         const height = Math.abs(y - e.clientY);
         setTempstyle({
@@ -73,58 +78,59 @@ export const Content = () => {
         });
       }
     }
-    if (allowresize && currentframeparams && x && y) {
-      const id = e.target.id;
-      if (id === "topleft") {
-        const w = parseInt(currentframeparams.width) - (e.clientX - x);
-        const h = parseInt(currentframeparams.height) - (e.clientY - y);
-        const l = parseInt(currentframeparams.left) + (e.clientX - x);
-        const t = parseInt(currentframeparams.top) + (e.clientY - y);
-        setTempstyle({
-          ...tempstyle,
-          width: `${w}px`,
-          height: `${h}px`,
-          left: `${l}px`,
-          top: `${t}px`,
-        });
-      }
-      if (id === "topright") {
-        const w = parseInt(currentframeparams?.width) + (e.clientX - x);
-        const h = parseInt(currentframeparams?.height) - (e.clientY - y);
-        const t = parseInt(currentframeparams?.top) + (e.clientY - y);
-        setTempstyle({
-          ...tempstyle,
-          width: `${w}px`,
-          height: `${h}px`,
-          left: currentframeparams?.left,
-          top: `${t}px`,
-        });
-      }
-      if (id === "bottomleft") {
-        const h = parseInt(currentframeparams?.height) + (e.clientY - y);
-        const w = parseInt(currentframeparams?.width) - (e.clientX - x);
-        const l = parseInt(currentframeparams?.left) + (e.clientX - x);
-        setTempstyle({
-          ...tempstyle,
-          width: `${w}px`,
-          height: `${h}px`,
-          left: `${l}px`,
-          top: currentframeparams?.top,
-        });
-      }
-      if (id === "bottomright") {
-        const w = parseInt(currentframeparams?.width) + (e.clientX - x);
-        const h = parseInt(currentframeparams?.height) + (e.clientY - y);
-        setTempstyle({
-          ...tempstyle,
-          width: `${w}px`,
-          height: `${h}px`,
-          left: currentframeparams?.left,
-          top: currentframeparams?.top,
-        });
-      }
-    }
+    // if (allowresize && currentframeparams && x && y) {
+    //   const id = e.target.id;
+    //   if (id === "topleft") {
+    //     const w = parseInt(currentframeparams.width) - (e.clientX - x);
+    //     const h = parseInt(currentframeparams.height) - (e.clientY - y);
+    //     const l = parseInt(currentframeparams.left) + (e.clientX - x);
+    //     const t = parseInt(currentframeparams.top) + (e.clientY - y);
+    //     setTempstyle({
+    //       ...tempstyle,
+    //       width: `${w}px`,
+    //       height: `${h}px`,
+    //       left: `${l}px`,
+    //       top: `${t}px`,
+    //     });
+    //   }
+    //   if (id === "topright") {
+    //     const w = parseInt(currentframeparams?.width) + (e.clientX - x);
+    //     const h = parseInt(currentframeparams?.height) - (e.clientY - y);
+    //     const t = parseInt(currentframeparams?.top) + (e.clientY - y);
+    //     setTempstyle({
+    //       ...tempstyle,
+    //       width: `${w}px`,
+    //       height: `${h}px`,
+    //       left: currentframeparams?.left,
+    //       top: `${t}px`,
+    //     });
+    //   }
+    //   if (id === "bottomleft") {
+    //     const h = parseInt(currentframeparams?.height) + (e.clientY - y);
+    //     const w = parseInt(currentframeparams?.width) - (e.clientX - x);
+    //     const l = parseInt(currentframeparams?.left) + (e.clientX - x);
+    //     setTempstyle({
+    //       ...tempstyle,
+    //       width: `${w}px`,
+    //       height: `${h}px`,
+    //       left: `${l}px`,
+    //       top: currentframeparams?.top,
+    //     });
+    //   }
+    //   if (id === "bottomright") {
+    //     const w = parseInt(currentframeparams?.width) + (e.clientX - x);
+    //     const h = parseInt(currentframeparams?.height) + (e.clientY - y);
+    //     setTempstyle({
+    //       ...tempstyle,
+    //       width: `${w}px`,
+    //       height: `${h}px`,
+    //       left: currentframeparams?.left,
+    //       top: currentframeparams?.top,
+    //     });
+    //   }
+    // }
   };
+  // const { parentChecker } = useCheckparent();
   const createFrameFinish = () => {
     if (allowcreateframe) {
       new Promise((resolve) => {
@@ -138,18 +144,17 @@ export const Content = () => {
       setY(0);
       return;
     }
-    if (allowresize && currentframeparams && x && y) {
-      setX(0);
-      setY(0);
-      setCurrentframeparams(tempstyle);
-      new Promise((resolve) => {
-        resolve(dispatch(updatecurrentframeAction(tempstyle, currentframeid)));
-      }).then(() => {
-        dispatch(getDataAction());
-      });
-    }
+    // if (allowresize && currentframeparams && x && y) {
+    //   setX(0);
+    //   setY(0);
+    //   setCurrentframeparams(tempstyle);
+    //   new Promise((resolve) => {
+    //     resolve(dispatch(updatecurrentframeAction(tempstyle, currentframeid)));
+    //   }).then(() => {
+    //     dispatch(getDataAction());
+    //   });
+    // }
   };
-  console.log(data);
   return (
     <div
       className={cls(styles.content, {

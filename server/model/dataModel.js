@@ -8,6 +8,7 @@ const Data = new mongoose.Schema(
     height: { type: String, default: "0px" },
     background: { type: String, default: "#000" },
     borderRadius: { type: String, default: "0px" },
+    parentId: { type: String, default: "" },
   },
   {
     timestamps: true,

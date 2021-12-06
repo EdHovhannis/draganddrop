@@ -9,7 +9,7 @@ export const createDataAction = (keys) => {
   return async (dispatch) => {
     try {
       const response = await fetch(
-        "https://drager.herokuapp.com/api/data/datacreate",
+        "http://localhost:8008/api/data/datacreate",
         {
           headers: {
             "Content-Type": "application/json",
@@ -35,7 +35,7 @@ export const getDataAction = () => {
   return async (dispatch) => {
     try {
       const response = await fetch(
-        "https://drager.herokuapp.com/api/data/getdata"
+        "http://localhost:8008/api/data/getdata"
       );
       const data = await response.json();
       dispatch({
@@ -58,7 +58,7 @@ export const deletecurrentframeAction = (id) => {
   return async () => {
     try {
       return await fetch(
-        `https://drager.herokuapp.com/api/data/removedata/${id}`,
+        `http://localhost:8008/api/data/removedata/${id}`,
         {
           method: "POST",
         }
@@ -72,7 +72,7 @@ export const updatecurrentframeAction = (keys, id) => {
   return async () => {
     try {
       return await fetch(
-        `https://drager.herokuapp.com/api/data/updatedata/${id}`,
+        `http://localhost:8008/api/data/updatedata/${id}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -90,7 +90,7 @@ export const updatecurrentbackgroundframeAction = (keys, id) => {
   return async () => {
     try {
       return await fetch(
-        `https://drager.herokuapp.com/api/data/updatebackground/${id}`,
+        `http://localhost:8008/api/data/updatebackground/${id}`,
         {
           headers: {
             "Content-Type": "application/json",

@@ -1,7 +1,7 @@
 import React from "react";
 import cls from "classnames";
 import styles from "./SideBar.module.css";
-import { sidebarstate } from "../../../locale/sidebarstate";
+import { sidebarstate } from "../../../locales/sidebarstate";
 import { ExampleBtns } from "../../../components/Button/ExampleBtns";
 
 export const SideBarContent = ({ attribute }) => {

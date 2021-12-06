@@ -8,9 +8,14 @@ import {
   getDataAction,
   updatecurrentframeAction,
 } from "../../store/actions/actions";
-import { useDispatch } from "react-redux";
+import {
+  useDispatch,
+  //  useSelector
+} from "react-redux";
+// import { useCheckparent } from "./../../helpers/useCheckparent";
 
 export const Temp = () => {
+  // const { data } = useSelector((state) => state?.getDataReducer);
   const dispatch = useDispatch();
   const {
     tempstyle,
@@ -27,7 +32,6 @@ export const Temp = () => {
 
   const dragingStart = (e) => {
     if (allowhandrock && currentframeparams && !allowresize) {
-      console.log("work");
       setX(e.clientX - parseInt(currentframeparams.left));
       setY(e.clientY - parseInt(currentframeparams.top));
     }
@@ -43,6 +47,7 @@ export const Temp = () => {
       });
     }
   };
+  // const { parentChecker } = useCheckparent();
   const dragingFinish = () => {
     if (allowhandrock && currentframeparams && x && y && !allowresize) {
       setX(0);
@@ -60,9 +65,9 @@ export const Temp = () => {
     <div
       className={cls(styles.temp, { [styles.move]: allowhandrock })}
       style={tempstyle}
-      onMouseDown={dragingStart}
-      onMouseMove={dragingProgress}
-      onMouseUp={dragingFinish}
+      // onMouseDown={dragingStart}
+      // onMouseMove={dragingProgress}
+      // onMouseUp={dragingFinish}
     >
       {allowresize && <Resizers />}
     </div>

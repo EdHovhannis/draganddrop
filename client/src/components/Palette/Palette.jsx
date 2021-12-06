@@ -28,8 +28,7 @@ export const Palette = ({ left, top }) => {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [color]);
-
-  console.log(color);
+ 
   return (
     <div
       className={styles.palette}

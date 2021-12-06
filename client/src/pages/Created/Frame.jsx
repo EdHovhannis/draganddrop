@@ -10,7 +10,11 @@ export const Frame = styled.div`
   border-radius: ${(props) => props.theme.borderRadius};
   border: 2px solid transparent;
   &:hover {
-    border: 2px solid blue;
+    ${(props) =>
+    props?.allowborder &&   
+    css`
+      border: 2px solid blue;
+    `};
   }
   ${(props) =>
     props?.allowframetools &&

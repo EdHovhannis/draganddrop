@@ -1,12 +1,13 @@
 import express from "express";
 const router = express.Router();
 import expressasynchandler from "express-async-handler";
-import Data from "../model/dataModel.js"; 
+import Data from "../model/dataModel.js";
 
 router.post(
   "/datacreate",
   expressasynchandler(async (req, res) => {
-    const { top, left, width, height, background, borderRadius } = req.body;
+    const { top, left, width, height, background, borderRadius, parentId } =
+      req.body;
     try {
       const data = new Data({
         top,
@@ -15,8 +16,10 @@ router.post(
         height,
         background,
         borderRadius,
+        parentId,
       });
       const created = await data.save();
+      console.log(created);
       res.status(201).send({ message: "new data was created", data: created });
     } catch (error) {
       console.log(error.message ? error.message : error);

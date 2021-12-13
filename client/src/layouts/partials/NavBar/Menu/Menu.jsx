@@ -9,8 +9,10 @@ import {
   deletecurrentframeAction,
   getDataAction,
 } from "./../../../../store/actions/actions";
+import { useHistory } from "react-router-dom";
 
 export const Menu = ({ gridposition }) => {
+  const router = useHistory();
   const dispatch = useDispatch();
   const st = {
     top: "",
@@ -118,6 +120,9 @@ export const Menu = ({ gridposition }) => {
       flag: true,
     });
   };
+  const tocodeview = () => {
+    router.push("/code");
+  };
 
   return (
     <div className={cls(gridposition, styles.menu)}>
@@ -149,11 +154,20 @@ export const Menu = ({ gridposition }) => {
           >
             Inputs
           </Button>
-          <Button way="navbtn" atr={"texts"} onClick={allowbuttonshandler} className={cls({
-              [styles.activelink]: allowhtmltagsmenu.atr === "texts",    
-            })}>
+          <Button
+            way="navbtn"
+            atr={"texts"}
+            onClick={allowbuttonshandler}
+            className={cls({
+              [styles.activelink]: allowhtmltagsmenu.atr === "texts",
+            })}
+          >
             Texts
           </Button>
+          <i
+            className={cls("fas fa-code", { [styles.activelink]: false })}
+            onClick={tocodeview}
+          ></i>
         </>
       )}
       {allowframetools && (
@@ -176,7 +190,6 @@ export const Menu = ({ gridposition }) => {
             })}
             onClick={allowpalletehandler}
           ></i>
-          <i className={cls("fas fa-code", { [styles.activelink]: false })}></i>
           <i
             className={cls("fas fa-trash", styles.trash)}
             onClick={deletecurrentframehandler}

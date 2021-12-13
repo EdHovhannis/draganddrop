@@ -19,7 +19,6 @@ router.post(
         parentId,
       });
       const created = await data.save();
-      console.log(created);
       res.status(201).send({ message: "new data was created", data: created });
     } catch (error) {
       console.log(error.message ? error.message : error);

@@ -8,14 +8,11 @@ import {
   getDataAction,
   updatecurrentframeAction,
 } from "../../store/actions/actions";
-import {
-  useDispatch,
-  //  useSelector
-} from "react-redux";
-// import { useCheckparent } from "./../../helpers/useCheckparent";
+import { useDispatch, useSelector } from "react-redux";
+import { useCheckparent } from "./../../helpers/useCheckparent";
 
 export const Temp = () => {
-  // const { data } = useSelector((state) => state?.getDataReducer);
+  const { data } = useSelector((state) => state?.getDataReducer);
   const dispatch = useDispatch();
   const {
     tempstyle,
@@ -47,14 +44,37 @@ export const Temp = () => {
       });
     }
   };
-  // const { parentChecker } = useCheckparent();
+  const { parentChecker } = useCheckparent();
+
   const dragingFinish = () => {
+    const check = parentChecker(data, tempstyle);
     if (allowhandrock && currentframeparams && x && y && !allowresize) {
       setX(0);
       setY(0);
       setCurrentframeparams(tempstyle);
-      new Promise((resolve) => {
-        resolve(dispatch(updatecurrentframeAction(tempstyle, currentframeid)));
+      if (check?._id) {
+        return new Promise((resolve) => {
+          resolve(
+            dispatch(
+              updatecurrentframeAction(
+                { ...tempstyle, parentId: check?._id },
+                currentframeid
+              )
+            )
+          );
+        }).then(() => {
+          dispatch(getDataAction());
+        });
+      }
+      return new Promise((resolve) => {
+        resolve(
+          dispatch(
+            updatecurrentframeAction(
+              { ...tempstyle, parentId: "" },
+              currentframeid
+            )
+          )
+        );
       }).then(() => {
         dispatch(getDataAction());
       });
@@ -65,9 +85,9 @@ export const Temp = () => {
     <div
       className={cls(styles.temp, { [styles.move]: allowhandrock })}
       style={tempstyle}
-      // onMouseDown={dragingStart}
-      // onMouseMove={dragingProgress}
-      // onMouseUp={dragingFinish}
+      onMouseDown={dragingStart}
+      onMouseMove={dragingProgress}
+      onMouseUp={dragingFinish}
     >
       {allowresize && <Resizers />}
     </div>

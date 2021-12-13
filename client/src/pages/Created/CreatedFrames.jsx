@@ -24,7 +24,6 @@ export const CreatedFrames = ({ frame }) => {
 
   const frameToolBar = () => {
     if (!allowresize && !allowcreateframe) {
-      console.log("work");
       setAllowframetools(!allowframetools);
       setAllowtoolbar(false);
       if (!allowframetools) {
@@ -55,7 +54,7 @@ export const CreatedFrames = ({ frame }) => {
         allowframetools={allowframetools && currentframeid === frame._id}
         nonedisp={allowresize && currentframeid === frame._id}
         allowborder={!allowcreateframe}
-        // onClick={frameToolBar}
+        onClick={frameToolBar}
       ></Frame>
       {allowpallete ? <Palette left={left} top={top} /> : <></>}
     </>

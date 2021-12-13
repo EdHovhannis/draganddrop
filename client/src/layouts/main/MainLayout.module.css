@@ -11,5 +11,6 @@
   grid-area: navbar;
 }
 .content {
+  position: relative;
   grid-area: content;
 }

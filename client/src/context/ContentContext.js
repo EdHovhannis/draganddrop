@@ -10,6 +10,7 @@ export const ContentProvider = ({ children }) => {
   const [frames, setFrames] = useState([]);
   const [currentframeid, setCurrentframeid] = useState("");
   const [currentframeparams, setCurrentframeparams] = useState(null);
+  const [codedata, setCodedata] = useState(null);
 
   const st = {
     top: "",
@@ -18,6 +19,7 @@ export const ContentProvider = ({ children }) => {
     height: "",
     background: "#bdbdbd",
     borderRadius: "0px",
+    parentId: "",
   };
   const [tempstyle, setTempstyle] = useState(st);
 
@@ -36,6 +38,8 @@ export const ContentProvider = ({ children }) => {
         setCurrentframeid,
         currentframeparams,
         setCurrentframeparams,
+        codedata,
+        setCodedata,
       }}
     >
       {children}
